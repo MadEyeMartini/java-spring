@@ -1,65 +1,74 @@
 package com.example.leaseloco;
 
 import com.opencsv.bean.CsvBindByName;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.math.BigDecimal;
+@Document("provideroffers")
+public class GenericCarsImp {
 
-public class GenericCarsImp implements CarListingInterface{
 
     private String Provider;
-    private String ProviderID;
-    private String Make;
-    private String Model;
-    private String Description;
-    private String Mileage;
-    private BigDecimal Price;
-    private Integer Term;
 
-    @Override
-    public GenericCarsImp setProvider(String provider) {
-        this.Provider = provider;
-        return this;
+    @CsvBindByName
+    @Id
+    private String ID;
+
+    @CsvBindByName
+    private String MAKE;
+
+    @CsvBindByName
+    private String MODEL;
+
+    @CsvBindByName
+    private String DESCRIPTION;
+
+    @CsvBindByName
+    private String MILEAGE;
+
+    @CsvBindByName
+    private String PRICE;
+
+    @CsvBindByName
+    private String TERM;
+
+
+
+
+   public GenericCarsImp setProvider(String provider) {
+       this.Provider = provider;
+       return this;
+   }
+
+    public String getProvider() {
+        return Provider;
     }
 
-    @Override
-    public GenericCarsImp setProviderID(String id) {
-        this.ProviderID = id;
-        return this;
+    public String getID() {
+        return ID;
     }
 
-    @Override
-    public GenericCarsImp setMake(String make) {
-        this.Make = make;
-        return this;
+    public String getMAKE() {
+        return MAKE;
     }
 
-    @Override
-    public GenericCarsImp setModel(String model) {
-        this.Model = model;
-        return this;
+    public String getMODEL() {
+        return MODEL;
     }
 
-    @Override
-    public GenericCarsImp setDesc(String desc) {
-        this.Description = desc;
-        return this;
+    public String getDESCRIPTION() {
+        return DESCRIPTION;
     }
 
-    @Override
-    public GenericCarsImp setMileage(String mileage) {
-        this.Mileage = mileage;
-        return this;
+    public String getMILEAGE() {
+        return MILEAGE;
     }
 
-    @Override
-    public GenericCarsImp setPrice(String price) {
-        this.Price = new BigDecimal(price);
-        return this;
+    public String getPRICE() {
+        return PRICE;
     }
 
-    @Override
-    public GenericCarsImp setTerm(int term) {
-        this.Term = term;
-        return this;
+    public String getTERM() {
+        return TERM;
     }
 }
