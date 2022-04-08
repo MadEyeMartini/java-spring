@@ -69,10 +69,9 @@ public class CSVInput {
             Map<String, String> values;
             while ((values = reader.readMap()) != null) {
                 System.out.println("Value: "+values);
-                if (providerName.equals("AmazingCars")) {
                     Provider.createOfferMap(values);
                     this.providerOfferRepo.save(Provider);
-                }
+
             }
 
         } catch (Exception e) {

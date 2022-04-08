@@ -11,6 +11,9 @@ import java.util.Map;
  * This could use annotation to automatically bind headers to values, it would need to be hardcoded and does not represent a "true" solution (or at least I believe so).
  * Using annotations a single class could be used by using OpenCSV Profiles, this is easier to do but not very scalable as annotations are hardcoded.
  * A switch case better represents how it could work using a database, similar to user settings it could store headers for each provider.
+ *
+ * Another way to attempt to handle this would be to use synonyms, creating a map of common words to schema key. This may simplify the onboarding
+ * processing for providers.
  */
 public class GenericProviderImp {
 
@@ -41,26 +44,13 @@ public class GenericProviderImp {
         setProvider("PrettyGoodDeals");
         offer.forEach((key, value) -> {
             switch (key) {
-                case "ID":
-                    this.setId(value);
-                    break;
-                case "MAKE":
-                    this.setMake(value);
-                    break;
-                case "MODEL":
-                    this.setModel(value);
-                    break;
-                case "MILEAGE":
-                    this.setMileage(value);
-                    break;
-                case "PRICE":
-                    this.setPrice(value);
-                    break;
-                case "TERM":
-                    this.setTerm(value);
-                    break;
-                default:
-                    System.out.println("Column not required");
+                case "ID" -> this.setId(value);
+                case "MAKE" -> this.setMake(value);
+                case "MODEL" -> this.setModel(value);
+                case "MILEAGE" -> this.setMileage(value);
+                case "PRICE" -> this.setPrice(value);
+                case "TERM" -> this.setTerm(value);
+                default -> System.out.println("Column not required");
             }
         });
        return this;
