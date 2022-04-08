@@ -21,7 +21,7 @@ public class LeaselocoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        CSVInput csvInput = new CSVInput(providerOfferRepo);
+    new CSVInput(providerOfferRepo);
     }
 
 
