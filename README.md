@@ -25,3 +25,4 @@ That is it!
 6. CSV paths are hardcoded in to read, another solution would just be to load all CSV within a folder but alas time is not in my favour.
 7. The GenericProviderImp was going to be a generic class that used synonyms to detect and automatically load CSVs, for example NAME, BRAND, MANUFACTURER would all link to MAKE. I had ran out of time for this too! :(
 8. I have not used Java since 2019 but Spring Boot is very cool, this was my first time using it!
+9. There was not enough time to do unit tests!
