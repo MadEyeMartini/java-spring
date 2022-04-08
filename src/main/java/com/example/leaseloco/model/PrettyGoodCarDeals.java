@@ -1,4 +1,4 @@
-package com.example.leaseloco.profiles;
+package com.example.leaseloco.model;
 
 import java.util.Map;
 
@@ -8,6 +8,8 @@ public class PrettyGoodCarDeals extends GenericProviderImp {
 
         setProvider("PrettyGoodDeals");
         offer.forEach((key, value) -> {
+            value = value.toUpperCase();
+
             switch (key) {
                 case "ID" -> this.setId(value);
                 case "MAKE" -> this.setMake(value);

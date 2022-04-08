@@ -1,11 +1,10 @@
-package com.example.leaseloco.profiles;
+package com.example.leaseloco.model;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-@Document("provideroffers")
 
 /**
  * This could use annotation to automatically bind headers to values, it would need to be hardcoded and does not represent a "true" solution (or at least I believe so).
@@ -15,6 +14,9 @@ import java.util.Map;
  * Another way to attempt to handle this would be to use synonyms, creating a map of common words to schema key. This may simplify the onboarding
  * processing for providers.
  */
+@Document("provideroffers")
+//@CompoundIndex(def = "{'Provider':1,'Id':1}", name = "compound_index")
+@Component
 public class GenericProviderImp {
 
 
@@ -33,16 +35,16 @@ public class GenericProviderImp {
     private String Term;
 
 
-   public GenericProviderImp setProvider(String provider) {
+   public void setProvider(String provider) {
        this.Provider = provider;
-       return this;
    }
 
 
     public GenericProviderImp createOfferMap(Map<String,String> offer) {
 
-        setProvider("PrettyGoodDeals");
+        setProvider("Generic");
         offer.forEach((key, value) -> {
+            value = value.toUpperCase();
             switch (key) {
                 case "ID" -> this.setId(value);
                 case "MAKE" -> this.setMake(value);
@@ -79,5 +81,33 @@ public class GenericProviderImp {
 
     public void setTerm(String TERM) {
         this.Term = TERM;
+    }
+
+    public String getProvider() {
+        return Provider;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public String getMake() {
+        return Make;
+    }
+
+    public String getModel() {
+        return Model;
+    }
+
+    public String getMileage() {
+        return Mileage;
+    }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public String getTerm() {
+        return Term;
     }
 }
